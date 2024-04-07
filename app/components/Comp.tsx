@@ -16,8 +16,9 @@ const Comp = () => {
             }
 
             const text = await pdfToText(file);
-            console.log(text);
-            setText(text + "rate my resume");
+            const res = text + "rate my resume and give score out of 10 donot rewrite the resume only score and output of 5 line";
+            console.log(res);
+            setText(res);
             setUser(true);
         } catch (error) {
             console.error("Failed to extract text from PDF", error);
@@ -26,7 +27,7 @@ const Comp = () => {
 
     return (
 
-        <div>
+        <div className='flex justify-center items-center border h-full w-full'>
             <input type="file" accept="application/pdf" onChange={extractText} />
         </div>
     );

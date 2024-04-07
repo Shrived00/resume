@@ -1,16 +1,18 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
+import Markdown from './Markdown';
+import { useUserStore } from '@/hooks/getUser';
 
 const Test: React.FC = () => {
-    const [text, setText] = useState<string | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
-    const mytext = "tarins in india";
+    const { text, setText } = useUserStore();
+    console.log(text);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 setLoading(true);
-                const response = await axios.post('/api/genai', { data: mytext }); // 
+                const response = await axios.post('/api/genai', { data: text });
                 setText(response.data.generatedText);
                 setLoading(false);
             } catch (error) {
@@ -23,7 +25,7 @@ const Test: React.FC = () => {
 
     return (
         <div>
-            {loading ? "Loading..." : (text ? text : "No data")}
+            {loading ? "Loading..." : <Markdown text={text} />}
         </div>
     );
 };

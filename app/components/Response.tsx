@@ -3,6 +3,7 @@ import { useUserStore } from '@/hooks/getUser';
 import { useChat } from 'ai/react';
 import { Bot, Send, User2 } from 'lucide-react';
 import { useEffect } from 'react'; // Import useEffect hook
+import Markdown from './Markdown';
 
 export default function Response() {
     const { messages, input, handleInputChange, handleSubmit, isLoading } = useChat({
