@@ -2,11 +2,11 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import Markdown from './Markdown';
 import { useUserStore } from '@/hooks/getUser';
+import Loading from './Loading';
 
 const Test: React.FC = () => {
     const [loading, setLoading] = useState<boolean>(true);
     const { text, setText } = useUserStore();
-    console.log(text);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -25,7 +25,7 @@ const Test: React.FC = () => {
 
     return (
         <div>
-            {loading ? "Loading..." : <Markdown text={text} />}
+            {loading ? <Loading /> : <Markdown text={text} />}
         </div>
     );
 };

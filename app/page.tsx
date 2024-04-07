@@ -1,7 +1,6 @@
 "use client"
-import Comp from "./components/Comp";
 import { useUserStore } from "@/hooks/getUser";
-import Response from "./components/Response";
+import DragDrop from "./components/DragDrop";
 import Test from "./components/Test";
 
 export default function Home() {
@@ -10,11 +9,8 @@ export default function Home() {
   const { user } = useUserStore();
 
   return (
-    <main className=" p-12">
-
-
-      {user ? <Test /> : <Comp />}
-
+    <main className="flex justify-center items-center  min-h-screen bg-black">
+      {user ? <Test /> : <DragDrop />}
     </main>
   );
 

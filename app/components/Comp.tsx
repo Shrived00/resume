@@ -17,7 +17,6 @@ const Comp = () => {
 
             const text = await pdfToText(file);
             const res = text + "rate my resume and give score out of 10 donot rewrite the resume only score and output of 5 line";
-            console.log(res);
             setText(res);
             setUser(true);
         } catch (error) {
