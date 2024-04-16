@@ -19,7 +19,7 @@ const DragDrop: React.FC = () => {
                 if (droppedFile && fileTypes.includes(droppedFile.type)) {
                     setFile(droppedFile);
                     const text = await pdfToText(droppedFile);
-                    const res = text + "rate my resume and give score out of 10 donot rewrite the resume only score and output of 5 line and in points like bullet points";
+                    const res = "rate resume  out of 100,and return only area of improvement and return in md format." + text;
                     setText(res);
                     setUser(true);
                     setIsLoading(true);
