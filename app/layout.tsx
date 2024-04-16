@@ -1,7 +1,12 @@
+
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import img from '../public/iridescent.webp'
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import Loading from "./components/Loading";
+import { useUserStore } from "@/hooks/getUser";
+import { GridBackgroundDemo } from "@/components/ui/gridback";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,7 +22,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className='relative'>
+        {/* <GridBackgroundDemo /> */}
+        <Navbar />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }

@@ -7,8 +7,7 @@ export async function POST(request: Request,) {
 
         const requestData = await request.json();
 
-        const prompt = " " + requestData.data;
-        console.log(prompt);
+        const prompt = requestData.data;
 
 
         const apiKey = process.env.GOOGLE_API_KEY;
@@ -29,3 +28,4 @@ export async function POST(request: Request,) {
         return NextResponse.json({ message: "Error" }, { status: 500 });
     }
 }
+

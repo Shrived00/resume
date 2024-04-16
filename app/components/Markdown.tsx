@@ -1,21 +1,20 @@
-import React from "react";
-import markdownit from "markdown-it";
-import DOMPurify from 'dompurify';
-import { motion } from "framer-motion"
+
+import React from 'react'
+import Markdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 
 type Props = {
     text: string;
 };
 
-const md = markdownit({
-});
+const Markdownone = ({ text }: Props) => {
+    return (
+        <div className="px-10 md:px-[10rem] ">
+            <div className=' border-t-4 border-b-4 py-3 mt-3'>
+                <Markdown remarkPlugins={[remarkGfm]}>{text}</Markdown>
+            </div>
+        </div>
+    )
+}
 
-const Markdown = ({ text }: Props) => {
-    const htmlcontent = md.render(text);
-    const sanitized = DOMPurify.sanitize(htmlcontent);
-    return <div
-
-        className="border p-10 m-4 rounded-lg overflow-hidden text-white" dangerouslySetInnerHTML={{ __html: sanitized }}></div>;
-};
-
-export default Markdown;
+export default Markdownone

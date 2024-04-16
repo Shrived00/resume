@@ -1,20 +1,25 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import Markdown from './Markdown';
 import { useUserStore } from '@/hooks/getUser';
 import Loading from './Loading';
+import Markdownone from './Markdown';
+import { useRouter } from 'next/navigation';
 
 const Test: React.FC = () => {
-    const [loading, setLoading] = useState<boolean>(true);
-    const { text, setText } = useUserStore();
-
+    const { user, text, setText, isLoading, setIsLoading } = useUserStore();
+    const router = useRouter();
     useEffect(() => {
+        if (!user) {
+            router.push('/')
+        }
         const fetchData = async () => {
             try {
-                setLoading(true);
+                setIsLoading(true);
+                console.log(text)
                 const response = await axios.post('/api/genai', { data: text });
+
                 setText(response.data.generatedText);
-                setLoading(false);
+                setIsLoading(false);
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
@@ -24,8 +29,9 @@ const Test: React.FC = () => {
     }, []);
 
     return (
-        <div>
-            {loading ? <Loading /> : <Markdown text={text} />}
+        <div className='px-10 min-h-[60vh] '>
+
+            {isLoading ? <Loading /> : <Markdownone text={text} />}
         </div>
     );
 };
