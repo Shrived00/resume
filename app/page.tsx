@@ -3,10 +3,21 @@ import { useUserStore } from "@/hooks/getUser";
 import DragDrop from "./components/DragDrop";
 import { Button } from "@/components/ui/button";
 import Loading from './components/Loading'
+import useLoginModal from "@/hooks/useLoginModal";
+import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
+
+const words = `Unlock the Potential of Your Resume with AI-Powered Feedbacks.
+`
 
 export default function Home() {
 
-  const { user, isLoading } = useUserStore();
+  const { isLoading } = useUserStore();
+  const loginModal = useLoginModal();
+  const onClickHandler = async () => {
+    loginModal.onOpen()
+  }
+
+
   return (
     <>
       {isLoading ? <Loading /> : (
@@ -16,7 +27,9 @@ export default function Home() {
 
           <div className="xs:flex-col  md:flex mb-10 my-3">
             <div className="basis-1/2">
-              <div className="text-4xl md:text-5xl font-bold  leading-normal">Unlock the Potential of Your Resume with AI-Powered Feedback</div>
+              <div className="">
+                <TextGenerateEffect words={words} />
+              </div>
             </div>
 
             <div className="basis-1/2">
@@ -24,7 +37,7 @@ export default function Home() {
 
               </div>
 
-              <Button className="inline-block my-4 px-3 text-center   py-2 rounded-full bg-[#1398aa] hover:bg-[#138493] hover:scale-105 ">Start for free</Button>
+              <Button className="inline-block my-4 px-3 text-center   py-2 rounded-full bg-[#1398aa] hover:bg-[#138493] hover:scale-105 " onClick={onClickHandler}>Start for free</Button>
 
 
             </div>

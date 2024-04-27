@@ -19,8 +19,7 @@ const DragDrop: React.FC = () => {
                 if (droppedFile && fileTypes.includes(droppedFile.type)) {
                     setFile(droppedFile);
                     const text = await pdfToText(droppedFile);
-                    const res = "rate resume  out of 100,and return only area of improvement and return in md format." + text;
-                    setText(res);
+                    const res = "rate out of 100,return area of improvemnt  only in markdown format" + text;
                     setUser(true);
                     setIsLoading(true);
                     router.push('/score');
@@ -37,7 +36,7 @@ const DragDrop: React.FC = () => {
             if (selectedFile && fileTypes.includes(selectedFile.type)) {
                 setFile(selectedFile);
                 const text = await pdfToText(selectedFile);
-                const res = text + "rate my resume and give score out of 10 donot rewrite the resume only score and output of 5 line and in points like bullet points";
+                const res = "rate out of 100,return area of improvemnt  only in markdown format " + text;
                 setText(res);
                 setUser(true);
                 setIsLoading(true);
@@ -62,10 +61,7 @@ const DragDrop: React.FC = () => {
             onClick={() => document.getElementById('fileInput')?.click()}
             className="border border-dashed rounded-xl  hover:bg-white/30 hover:scale-110 transition-all ease-in-out duration-200 hover:text-black cursor-pointer
                 
-            w-[80%] h-[100%] flex justify-center items-center text-white/80 text-lg font-semibold
-            
-                
-                "
+            w-[80%] h-[100%] flex justify-center items-center text-white/80 text-lg font-semibold"
         >
             <input
                 id="fileInput"
