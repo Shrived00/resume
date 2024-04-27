@@ -5,6 +5,7 @@ import Loading from './Loading';
 import { useRouter } from 'next/navigation';
 import Markdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
+import toast from 'react-hot-toast';
 
 
 const Test: React.FC = () => {
@@ -26,6 +27,7 @@ const Test: React.FC = () => {
 
             } catch (error) {
                 console.error('Error fetching data:', error);
+                toast.error('An error occurred. Please try again later.')
             }
         };
 
